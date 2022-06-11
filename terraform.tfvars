@@ -2,7 +2,6 @@ aws_region          = "cn-north-1"
 aws_account         = "aws-china-account"
 name_suffix         = "bwibowo"
 existing_spoke_cidr = "10.1.0.0/24"
-ha_gw               = true
 
 aviatrix_data = {
   spoke = {

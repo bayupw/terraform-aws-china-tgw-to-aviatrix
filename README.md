@@ -1,7 +1,10 @@
 # AWS TGW China region Integration with Aviatrix
 
 Terraform code to demonstrate how to integrate AWS Transit Gateway in China region with Aviatrix.
-Note: VPN and AWS TGW VPN is not supported in AWS China
+Notes: 
+- VPN and AWS TGW VPN is not supported in AWS China
+- This terraform code is for single AZ implementation, the code does not cater for multi-AZ deployment as of now
+- This terraform code has not been tested with Aviatrix HA gateway implementation
 
 This repository provides a Terraform code that deploys:
 - AWS TGW in China region
@@ -62,6 +65,9 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 ```
+
+Check the output of: spoke_gateway_customize_spoke_advertisement
+Input the
 
 ## Contributing
 

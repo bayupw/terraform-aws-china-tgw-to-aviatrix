@@ -31,7 +31,7 @@ variable "aviatrix_data" {
 variable "ha_gw" {
   description = "Enable Aviatrix HA Gateway"
   type        = bool
-  default     = true
+  default     = false
 }
 
 locals {
