@@ -18,7 +18,7 @@ This repository provides a Terraform code that deploys:
 - EC2 instance in Aviatrix Spoke
 - EC2 instance in Peering Spoke (for testing between Aviatrix Spoke and Aviatrix Peering)
 
-![AWS TGW China region Integration with Aviatrix Topology](images/terraform-aws-china-tgw-to-aviatrix.png "AWS TGW China region Integration with Aviatrix Topology")
+![AWS TGW China region Integration with Aviatrix Topology](images/terraform-aws-china-tgw-to-aviatrix-topology.png "AWS TGW China region Integration with Aviatrix Topology")
 
 ## Prerequisites
 
@@ -67,7 +67,11 @@ terraform apply -auto-approve
 ```
 
 Check the output of: spoke_gateway_customize_spoke_advertisement
-Input the
+![spoke_gateway_customize_spoke_advertisement output](images/spoke_gateway_customize_spoke_advertisement_output.png "spoke_gateway_customize_spoke_advertisement output")
+
+Input the CIDRs as custom spoke advertisement on the peering spoke gateway
+Console into EC2 instances via SSM to existing spoke (ec2_ssm_existing_spoke) and aviatrix spoke (ec2_ssm_aviatrix_spoke)
+Test ping between the two EC2 instances
 
 ## Contributing
 
