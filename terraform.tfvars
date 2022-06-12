@@ -1,10 +1,12 @@
-aws_region  = "cn-north-1"
-aws_account = "aws-china-account"
-name_suffix = "bwibowo"
+aws_region      = "cn-north-1"
+aws_account     = "aws-china-account"
+aws_cli_profile = "aws-china-account"
+name_suffix     = "bwibowo"
+ha_gw           = true
 
 vpc_data = {
   tgw_spoke = {
-    name = "tgw_spoke"
+    name = "tgw-spoke"
     cidr = "10.1.0.0/24"
   }
   spoke = {
