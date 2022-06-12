@@ -11,6 +11,12 @@ variable "aws_account" {
   default     = "aws-china-account"
 }
 
+variable "aws_cli_profile" {
+  description = "AWS CLI named profile"
+  type        = string
+  default     = "default"
+}
+
 variable "name_suffix" {
   description = "Name suffix for tags"
   type        = string
@@ -25,7 +31,7 @@ variable "vpc_data" {
 variable "ha_gw" {
   description = "Enable Aviatrix HA Gateway"
   type        = bool
-  default     = false
+  default     = true
 }
 
 locals {

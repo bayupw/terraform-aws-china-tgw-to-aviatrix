@@ -3,8 +3,6 @@
 Terraform code to demonstrate how to integrate AWS Transit Gateway in China region with Aviatrix.
 Notes: 
 - VPN and AWS TGW VPN is not supported in AWS China
-- This terraform code is for single AZ implementation, the code does not cater for multi-AZ deployment as of now
-- This terraform code has not been tested with Aviatrix HA gateway implementation
 
 This repository provides a Terraform code that deploys:
 - AWS TGW in China region
@@ -18,7 +16,7 @@ This repository provides a Terraform code that deploys:
 - EC2 instance in Aviatrix Spoke
 - EC2 instance in Peering Spoke (for testing between Aviatrix Spoke and Aviatrix Peering)
 
-![AWS TGW China region Integration with Aviatrix Topology](images/terraform-aws-china-tgw-to-aviatrix-topology.png "AWS TGW China region Integration with Aviatrix Topology")
+![AWS TGW China region Integration with Aviatrix Topology](images/terraform-aws-china-tgw-to-aviatrix.png "AWS TGW China region Integration with Aviatrix Topology")
 
 ## Prerequisites
 
@@ -55,7 +53,6 @@ export AWS_ACCESS_KEY_ID="A1b2C3d4E5"
 export AWS_SECRET_ACCESS_KEY="A1b2C3d4E5"
 export AWS_DEFAULT_REGION="ap-southeast-2"
 ```
-Update the terraform.tfvars file if required
 
 Terraform workflow
 
@@ -65,12 +62,10 @@ terraform plan
 terraform apply -auto-approve
 ```
 
-Check the output of: spoke_gateway_customize_spoke_advertisement
-Input the CIDRs as custom spoke advertisement on the peering spoke gateway
+Check the output of: spoke_gateway_customize_spoke_advertisement and input the CIDRs as custom spoke advertisement on the peering spoke gateway
 ![spoke_gateway_customize_spoke_advertisement output](images/spoke_gateway_customize_spoke_advertisement_output.png "spoke_gateway_customize_spoke_advertisement output")
 
-Console into EC2 instances via SSM to existing spoke (ec2_ssm_tgw_spoke) and aviatrix spoke (ec2_ssm_aviatrix_spoke)
-Perform ping tests between the two EC2 instances
+Console into via SSM at EC2 instances in tgw spoke VPC (ec2_ssm_tgw_spoke) and in aviatrix spoke VPC (ec2_ssm_aviatrix_spoke) then perform ping tests between the two EC2 instances
 ![ping test](images/ping-test.png "ping test")
 
 ## Contributing

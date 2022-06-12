@@ -1,6 +1,6 @@
 output "ec2_ssm_tgw_spoke" {
   description = "Client Instance SSM command"
-  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.tgw_spoke_ec2.aws_instance.id} --profile aws-china-account"
+  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.tgw_spoke_ec2.aws_instance.id} --profile ${var.aws_cli_profile}"
 }
 
 output "ec2_private_ip_tgw_spoke" {
@@ -10,7 +10,7 @@ output "ec2_private_ip_tgw_spoke" {
 
 output "ec2_ssm_aviatrix_spoke" {
   description = "Client Instance SSM command"
-  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.spoke_ec2.aws_instance.id} --profile aws-china-account"
+  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.spoke_ec2.aws_instance.id} --profile ${var.aws_cli_profile}"
 }
 
 output "ec2_private_ip_aviatrix_spoke" {
@@ -20,7 +20,7 @@ output "ec2_private_ip_aviatrix_spoke" {
 
 output "ec2_ssm_aviatrix_peering_spoke" {
   description = "Client Instance SSM command"
-  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.peering_spoke_ec2.aws_instance.id} --profile aws-china-account"
+  value       = "aws ssm start-session --region ${var.aws_region} --target ${module.peering_spoke_ec2.aws_instance.id} --profile ${var.aws_cli_profile}"
 }
 
 output "ec2_private_ip_aviatrix_peering_spoke" {
