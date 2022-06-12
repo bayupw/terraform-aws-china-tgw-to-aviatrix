@@ -1,6 +1,6 @@
-# AWS TGW China region Integration with Aviatrix
+# AWS TGW China Region Connectivity with Aviatrix
 
-Terraform code to demonstrate how to integrate AWS Transit Gateway in China region with Aviatrix.
+Terraform code to demonstrate how to connect AWS Transit Gateway in China region with Aviatrix.
 Notes: 
 - VPN and AWS TGW VPN is not supported in AWS China
 
