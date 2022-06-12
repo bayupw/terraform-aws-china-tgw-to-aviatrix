@@ -55,7 +55,6 @@ export AWS_ACCESS_KEY_ID="A1b2C3d4E5"
 export AWS_SECRET_ACCESS_KEY="A1b2C3d4E5"
 export AWS_DEFAULT_REGION="ap-southeast-2"
 ```
-
 Update the terraform.tfvars file if required
 
 Terraform workflow
@@ -67,11 +66,12 @@ terraform apply -auto-approve
 ```
 
 Check the output of: spoke_gateway_customize_spoke_advertisement
+Input the CIDRs as custom spoke advertisement on the peering spoke gateway
 ![spoke_gateway_customize_spoke_advertisement output](images/spoke_gateway_customize_spoke_advertisement_output.png "spoke_gateway_customize_spoke_advertisement output")
 
-Input the CIDRs as custom spoke advertisement on the peering spoke gateway
-Console into EC2 instances via SSM to existing spoke (ec2_ssm_existing_spoke) and aviatrix spoke (ec2_ssm_aviatrix_spoke)
-Test ping between the two EC2 instances
+Console into EC2 instances via SSM to existing spoke (ec2_ssm_tgw_spoke) and aviatrix spoke (ec2_ssm_aviatrix_spoke)
+Perform ping tests between the two EC2 instances
+![ping test](images/ping-test.png "ping test")
 
 ## Contributing
 
