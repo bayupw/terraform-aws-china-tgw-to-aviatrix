@@ -17,13 +17,7 @@ variable "name_suffix" {
   default     = "bwibowo"
 }
 
-variable "existing_spoke_cidr" {
-  description = "CIDR for existing spoke attached to AWS TGW"
-  type        = string
-  default     = "10.1.0.0/24"
-}
-
-variable "aviatrix_data" {
+variable "vpc_data" {
   description = "Maps of Aviatrix transit and spoke data (VPC and gateways)"
   type        = map(any)
 }

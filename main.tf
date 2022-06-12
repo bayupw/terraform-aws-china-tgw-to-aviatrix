@@ -4,10 +4,10 @@ module "transit" {
   version = "2.1.1"
 
   cloud   = "aws"
-  account = var.aviatrix_data.transit.account
-  region  = var.aviatrix_data.transit.region
-  name    = "${var.name_suffix}-${var.aviatrix_data.transit.name}"
-  cidr    = var.aviatrix_data.transit.cidr
+  account = var.vpc_data.transit.account
+  region  = var.aws_region
+  name    = "${var.name_suffix}-${var.vpc_data.transit.name}"
+  cidr    = var.vpc_data.transit.cidr
   ha_gw   = var.ha_gw
 }
 
@@ -17,10 +17,10 @@ module "spoke" {
   version = "1.2.0"
 
   cloud      = "aws"
-  account    = var.aviatrix_data.spoke.account
-  region     = var.aviatrix_data.spoke.region
-  name       = "${var.name_suffix}-${var.aviatrix_data.spoke.name}"
-  cidr       = var.aviatrix_data.spoke.cidr
+  account    = var.vpc_data.spoke.account
+  region     = var.aws_region
+  name       = "${var.name_suffix}-${var.vpc_data.spoke.name}"
+  cidr       = var.vpc_data.spoke.cidr
   ha_gw      = var.ha_gw
   transit_gw = module.transit.transit_gateway.gw_name
 }
@@ -31,14 +31,14 @@ module "peering_spoke" {
   version = "1.2.0"
 
   cloud      = "aws"
-  account    = var.aviatrix_data.peering_spoke.account
-  region     = var.aviatrix_data.peering_spoke.region
-  name       = "${var.name_suffix}-${var.aviatrix_data.peering_spoke.name}"
-  cidr       = var.aviatrix_data.peering_spoke.cidr
+  account    = var.vpc_data.peering_spoke.account
+  region     = var.aws_region
+  name       = "${var.name_suffix}-${var.vpc_data.peering_spoke.name}"
+  cidr       = var.vpc_data.peering_spoke.cidr
   ha_gw      = var.ha_gw
   transit_gw = module.transit.transit_gateway.gw_name
 
-  #included_advertised_spoke_routes = "${var.existing_spoke_cidr},${var.aviatrix_data.peering_spoke.cidr}"
+  #included_advertised_spoke_routes = "${var.vpc_data.tgw_spoke.cidr},${var.vpc_data.peering_spoke.cidr}"
 }
 
 # Create SSM Instance Profile
@@ -114,11 +114,11 @@ data "aws_route_table" "peering_spoke_public_rtbs" {
 }
 
 # Create route to existing AWS VPC via TGW
-resource "aws_route" "aviatrix_to_tgw" {
+resource "aws_route" "peering_spoke_to_tgw" {
   count = 2
 
   route_table_id         = data.aws_route_table.peering_spoke_public_rtbs[count.index].id
-  destination_cidr_block = var.existing_spoke_cidr
+  destination_cidr_block = var.vpc_data.tgw_spoke.cidr
   transit_gateway_id     = module.tgw.ec2_transit_gateway_id
 
   depends_on = [module.peering_spoke, module.tgw]
