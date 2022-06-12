@@ -17,7 +17,7 @@ aviatrix_data = {
     account = "aws-china-account"
     region  = "cn-north-1"
     name    = "transit"
-    cidr    = "10.2.254.0/23"
+    cidr    = "10.2.200.0/23"
     gw_size = "t3.micro"
     asn     = "65011"
   }
@@ -26,7 +26,7 @@ aviatrix_data = {
     account = "aws-china-account"
     region  = "cn-north-1"
     name    = "peering-spoke"
-    cidr    = "10.2.253.0/24"
+    cidr    = "10.2.100.0/24"
     gw_size = "t3.micro"
   }
 }
